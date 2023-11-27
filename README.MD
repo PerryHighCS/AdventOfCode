@@ -5,7 +5,7 @@ This is a template to aid in solving Advent of Code puzzles in Codespaces.
 In order to download your input files, you will need to update the environment
 variables. [See this documentation](https://docs.github.com/en/codespaces/managing-your-codespaces/managing-secrets-for-your-codespaces#editing-a-secret)
 to create a YEAR variable with the year being solved (YEAR=2023) and your 
-session cookie (SESSION=5FC3BD23.....) ![Get your session cookie from the web inspector, cookies for adventofcode.com](https://github.com/PerryHighCS/AdventOfCode/blob/master/SessionCookie.png?raw=true)
+session cookie (SESSION=5FC3BD23.....) [This picture shows the current steps to get your session cookie from the web inspector for adventofcode.com](https://github.com/PerryHighCS/AdventOfCode/blob/master/SessionCookie.png?raw=true)
 
 Each DayXXSolution class has a main method which will run your solutions.
 Solutions come in 3 parts:
