@@ -1,9 +1,11 @@
-# Advent-of-Code Java Template for bluej
-This is a template to aid in solving Advent of Code puzzles in bluej.
+# Advent-of-Code Java Template for GitHub Codespaces
+This is a template to aid in solving Advent of Code puzzles in Codespaces.
 
 # To Use
-In order to download your input files, you will need to update settings.txt
-following the instructions included in the file.
+In order to download your input files, you will need to update the environment
+variables. [See this documentation](https://docs.github.com/en/codespaces/managing-your-codespaces/managing-secrets-for-your-codespaces#editing-a-secret)
+to create a YEAR variable with the year being solved (YEAR=2023) and your 
+session cookie (SESSION=5FC3BD23.....) ![Get your session cookie from the web inspector, cookies for adventofcode.com](https://github.com/PerryHighCS/AdventOfCode/blob/main/SessionCookie.png?raw=true)
 
 Each DayXXSolution class has a main method which will run your solutions.
 Solutions come in 3 parts:
