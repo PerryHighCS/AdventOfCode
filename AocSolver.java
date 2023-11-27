@@ -180,7 +180,6 @@ class Helper {
                 while ((inputLine = in.readLine()) != null) {
                     System.err.println(inputLine);
                 }
-                System.err.println("You may want to delete settings.txt");
                 System.exit(0);
             }
 
