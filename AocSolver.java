@@ -1,10 +1,8 @@
 import java.nio.file.*;
 import java.io.*;
-import java.util.*;
 
 import java.time.LocalDate;
 import java.net.*;
-import javax.swing.JOptionPane;
 
 /**
  * This interface describes the methods every day's solution MUST implement.
@@ -126,33 +124,9 @@ class Helper {
      * @return the input data
      */
     private static String getInput(int day) {
-        int year;
-
-        Properties props = new Properties();
-        try (FileInputStream in = new FileInputStream("settings.txt")) {
-            props.load(in);
-        }
-        catch (IOException e) {
-            // there is no settings.txt property file, so try to create one
-            props.setProperty("YEAR", getYear());
-            props.setProperty("SESSION", getSessionCookie());
-
-            // try to save the settings.txt file
-            try (FileOutputStream out = new FileOutputStream("settings.txt")) {
-                props.store(out, "");
-            }
-            catch (IOException ex) {
-                JOptionPane.showMessageDialog(null,
-                        "Could not save Advent of Code year/session to settings.txt: " +
-                                ex.getLocalizedMessage(),
-                        "Could not write file",
-                        JOptionPane.WARNING_MESSAGE);
-            }
-        }
-
-        String yearString = props.getProperty("YEAR",
-                "" + LocalDate.now().getYear());
-        year = Integer.parseInt(yearString);
+        // Determine the year for this competition
+        String yearString = getYear();
+        int year = Integer.parseInt(yearString);
 
         // Use a default filename for the day's input
         String filename = String.format("input/day%02d.txt", day);
@@ -171,13 +145,8 @@ class Helper {
             }
         }
 
-        // make sure a session cookie has been provided for downloading
-        // authorization
-        String cookie = props.getProperty("SESSION");
-
-        if (cookie == null || cookie.length() < 90) {
-            cookie = getSessionCookie();
-        }
+        // make sure a session cookie has been provided for downloading authorization
+        String cookie = getSessionCookie();
 
         if (cookie == null || cookie.length() < 90) {
             System.err.println("You need a session cookie to download input.");
@@ -241,28 +210,39 @@ class Helper {
     }
 
     private static String getYear() {
-        int year = LocalDate.now().getYear();
-        String yearString = JOptionPane.showInputDialog("Which Advent of Code year are you completing?", year);
+        String yearString = System.getenv("YEAR");
+
         if (yearString == null) {
-            yearString = "" + year;
+            System.out.println("YEAR not set, assuming " + LocalDate.now().getYear());
+            yearString = "" + LocalDate.now().getYear();
         }
 
         return yearString;
     }
 
     private static String getSessionCookie() {
-        String message = "In order to download the input files, you will need your session cookie\n" +
-                "which allows access in your name to the Advent of Code site. To get this\n" +
-                "cookie, you will need to log into the Advent of Code website using a web\n" +
-                "browser. Using Chrome, you can go to https://adventofcode.com and press\n" +
-                "F12 to display the Developer Console. At the top of the console, is a\n" +
-                "menu with `Elements`, `Console`, `Sources`, etc.  You want the\n" +
-                "`Application` tab, you might need to press the `>>` button to find it.\n" +
-                "On the Application page, look for Cookies under the Storage item. Click\n" +
-                "`Cookies`, then click `https://adventofcode.com`. Find the cookie named\n" +
-                "`session`. The Value of this cookie is what you want. Double click the\n" +
-                "value and press Ctrl-C to copy the value, then paste it here.";
+        String cookie = System.getenv("SESSION");
 
-        return JOptionPane.showInputDialog(message);
+        if (cookie == null) {
+            String message = "In order to download the input files, you will need your session cookie\n" +
+                    "which allows access in your name to the Advent of Code site. To get this\n" +
+                    "cookie, you will need to log into the Advent of Code website using a web\n" +
+                    "browser. Using Chrome, you can go to https://adventofcode.com and press\n" +
+                    "F12 to display the Developer Console. At the top of the console, is a\n" +
+                    "menu with `Elements`, `Console`, `Sources`, etc.  You want the\n" +
+                    "`Application` tab, you might need to press the `>>` button to find it.\n" +
+                    "On the Application page, look for Cookies under the Storage item. Click\n" +
+                    "`Cookies`, then click `https://adventofcode.com`. Find the cookie named\n" +
+                    "`session`. The Value of this cookie is what you want. You'll need to add\n" +
+                    "it to the secrets for this codespace on Github.\n\n" +
+                    "See: https://docs.github.com/en/codespaces/managing-your-codespaces/managing-secrets-for-your-codespaces#editing-a-secret" +
+                    "\n\n";
+
+            System.out.println(message);
+
+            throw new RuntimeException("No session cookie.");
+        }
+
+        return cookie;
     }
 }
