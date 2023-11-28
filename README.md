@@ -7,7 +7,7 @@ variables. [See this documentation](https://docs.github.com/en/codespaces/managi
 to create a YEAR variable with the year being solved (AOC_YEAR=2023) and your 
 session cookie (AOC_SESSION=5FC3BD23.....) 
 
-[This picture shows the current steps to get your session cookie from the web inspector for adventofcode.com](https://github.com/PerryHighCS/AdventOfCode/blob/master/SessionCookie.png?raw=true)
+[This picture shows the current steps to get your session cookie from the web inspector for adventofcode.com](https://github.com/PerryHighCS/AdventOfCode/blob/master/SessionCookie.png)
 
 Each __Day*XX*Solution__ class has a main method which will run your solutions.
 Solutions come in 3 parts:
