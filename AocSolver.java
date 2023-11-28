@@ -209,7 +209,7 @@ class Helper {
     }
 
     private static String getYear() {
-        String yearString = System.getenv("YEAR");
+        String yearString = System.getenv("AOC_YEAR");
 
         if (yearString == null) {
             System.out.println("YEAR not set, assuming " + LocalDate.now().getYear());
@@ -220,7 +220,7 @@ class Helper {
     }
 
     private static String getSessionCookie() {
-        String cookie = System.getenv("SESSION");
+        String cookie = System.getenv("AOC_SESSION");
 
         if (cookie == null) {
             String message = "In order to download the input files, you will need your session cookie\n" +
@@ -234,7 +234,7 @@ class Helper {
                     "`Cookies`, then click `https://adventofcode.com`. Find the cookie named\n" +
                     "`session`. The Value of this cookie is what you want. You'll need to add\n" +
                     "it to the secrets for this codespace on Github.\n\n" +
-                    "See: https://docs.github.com/en/codespaces/managing-your-codespaces/managing-secrets-for-your-codespaces#editing-a-secret" +
+                    "See: https://docs.github.com/en/codespaces/managing-codespaces-for-your-organization/managing-secrets-for-your-repository-and-organization-for-github-codespaces#adding-secrets-for-a-repository" +
                     "\n\n";
 
             System.out.println(message);
