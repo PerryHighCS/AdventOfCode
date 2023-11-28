@@ -7,7 +7,7 @@ variables. [See this documentation](https://docs.github.com/en/codespaces/managi
 to create a YEAR variable with the year being solved (AOC_YEAR=2023) and your 
 session cookie (AOC_SESSION=5FC3BD23.....) [This picture shows the current steps to get your session cookie from the web inspector for adventofcode.com](https://github.com/PerryHighCS/AdventOfCode/blob/master/SessionCookie.png?raw=true)
 
-Each **Day_XX_Solution** class has a main method which will run your solutions.
+Each __Day*XX*Solution__ class has a main method which will run your solutions.
 Solutions come in 3 parts:
 
 1. prepare
@@ -29,4 +29,4 @@ If you want to try your solution against the sample input provided in the
 problem description, you need to copy it into a file in a folder named
 __input/sample/day*XX*/__ where **_XX_** is the day number with a leading 0 if necessary
 (01 for Dec 1st). Name the file whatever you want, but put the name in the
-**SAMPLE_INPUT_FILENAME** String for the proper **Day_XX_Solution** class.
+**SAMPLE_INPUT_FILENAME** String for the proper __Day*XX*Solution__ class.
