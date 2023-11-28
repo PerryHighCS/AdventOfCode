@@ -27,6 +27,6 @@ Solutions come in 3 parts:
 
 If you want to try your solution against the sample input provided in the
 problem description, you need to copy it into a file in a folder named
-**input/sample/day_XX_/** where **_XX_** is the day number with a leading 0 if necessary
+__input/sample/day*XX*/__ where **_XX_** is the day number with a leading 0 if necessary
 (01 for Dec 1st). Name the file whatever you want, but put the name in the
 **SAMPLE_INPUT_FILENAME** String for the proper **Day_XX_Solution** class.
